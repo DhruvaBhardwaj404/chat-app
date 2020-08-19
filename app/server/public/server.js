@@ -86,6 +86,12 @@ app.post('/reg',async (req,res)=>{
       res.send(JSON.stringify({message:'ServerError'}))
     }
   })
+
+  
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../../build', 'index.html'));
+  });
+  
   
 //=========socket.io====================//
 

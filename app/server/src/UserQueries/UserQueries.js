@@ -43,7 +43,7 @@ async function getActive(username){
      // console.log(await exist);
      const userData=await Users.findOne({username});
      //console.log(await userData);
-     const friend=await userData.friends;
+     //const friend=await userData.friends;
      //console.log(await friend);
      const listOfActive= await Active.find({active:true});
      //console.log(await listOfActive);

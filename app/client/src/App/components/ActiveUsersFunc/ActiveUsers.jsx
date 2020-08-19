@@ -9,8 +9,15 @@ function ActiveUsers(props) {
         const userList=await getActiveUsers(props.username);
        setList(userList);
      },1000); 
+        
         return (
             <div style={{height:'65vh',overflow:'auto'}} className='container-fluid bg-secondary p-3 border'>
+                <div className="cotainer bg-white rounded-pill p-3">
+                    <center>
+                        Active Users!!
+                    </center>
+                </div>
+                <br/>
                 <table className="table text-dark">
                 {list.map((user)=>{     if(user.username!==props.username)
                                            return (
@@ -25,7 +32,7 @@ function ActiveUsers(props) {
                 </table>
             </div>
         )
-
+        
 }
 
 const mapStateToProps=(state)=>{

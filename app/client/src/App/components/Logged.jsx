@@ -3,10 +3,11 @@ import ChatBox from './ChatBoxFunc/ChatBox.jsx'
 import ActiveUsers from './ActiveUsersFunc/ActiveUsers.jsx'
 import {connect} from 'react-redux'
 import {socket} from './SocketCon.js'
-
+import {Redirect, useHistory} from 'react-router-dom'
 
 function Logged(props){
-    
+    let history = useHistory();
+    if(props.username){
     socket.emit('SET',{username:props.username,message:'connected'});
         return (
             <React.Fragment>
@@ -22,7 +23,22 @@ function Logged(props){
                 </div>
             </React.Fragment>
         )
-    
+        }
+        else{
+            return (
+                <div style={{height:"70vh"}} className='container-fluid justify-content-center bg-secondary shadow  p-3'>
+                  {setTimeout(()=>{
+                      history.push('/Login')
+                  },3000)}
+                  <div style={{marginTop:"170px"}} className="alert alert-danger  display-4 p-5">
+                       <center>
+                       Not Logged In!   
+                       </center>
+                  </div>
+                  
+                </div>    
+            )
+        }
 }
 
 const mapStateToProps=(state)=>{

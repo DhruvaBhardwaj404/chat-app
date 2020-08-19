@@ -6,24 +6,28 @@ import {chatSetAction} from '../../redux';
 import {socket} from '.././SocketCon.js'
 
 
+
 function ChatBox(props) {
         socket.on('get_message',data=>{
             props.loadMessage(data);  
         })
 
+            
         return (
-        <div style={{height:"65vh"}} className='bg-secondary shadow justify-content-center'>
+            <div style={{height:"65vh"}} className='bg-secondary shadow justify-content-center'>
                 <DisplayMessage/>
                 <br/>
                 <MessageBox/>
-        </div>                
+            </div>                
         )
-    
+        
 }
 
 const mapStateToProps= state =>{
     return {
-        messages:state.messages
+        messages:state.messages,
+        username:state.data.username
+
     } 
     
 }
